@@ -9,6 +9,7 @@ public class PublicacionDetalle {
     private int publicacionId;
     private String lugar;
     private String descripcion;
+    public String prueba;
 
     public int getId() {
         return id;
