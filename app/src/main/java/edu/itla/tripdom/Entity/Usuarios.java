@@ -7,7 +7,35 @@ package edu.itla.tripdom.Entity;
 public class Usuarios {
     private int usuarioId;
     private String nombreUsuario;
-    private String tipoUsuario;
+    private TipoUsuario tipoUsuario;
+    private String email;
+    private String telefono;
+
+
+    //region getters & setters
+    public String getEmail() {
+        return email;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
     public int getUsuarioId() {
         return usuarioId;
@@ -17,9 +45,6 @@ public class Usuarios {
         return nombreUsuario;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
 
     public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
@@ -29,8 +54,19 @@ public class Usuarios {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+
+    //endregion
+
+
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "usuarioId=" + usuarioId +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
     }
 
 

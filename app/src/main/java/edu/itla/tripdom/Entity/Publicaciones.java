@@ -1,9 +1,14 @@
 package edu.itla.tripdom.Entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 /**
  * Created by fabio on 11/13/2017.
  */
+
+
 
 public class Publicaciones {
     private int publicacionId;
@@ -12,10 +17,25 @@ public class Publicaciones {
     private float costo;
     private String descripcion;
     private boolean status;
-    private int usuarioId;
+    private Usuarios usuario;
     private String origen;
     private int cupo;
+    private List<PublicacionDetalle> detalle;
 
+    public List<PublicacionDetalle> getDetalle() {
+        return detalle;
+    }
+
+    public void addDetalle(PublicacionDetalle publicacionDetalle){
+        if(detalle == null)
+        {
+            detalle = new ArrayList<>();
+        }
+        publicacionDetalle.setPublicacion(this);
+        detalle.add(publicacionDetalle);
+    }
+
+    //region getters & setters
 
     public int getPublicacionId() {
         return publicacionId;
@@ -41,8 +61,8 @@ public class Publicaciones {
         return status;
     }
 
-    public int getUsuarioId() {
-        return usuarioId;
+    public Usuarios getUsuario() {
+        return usuario;
     }
 
     public String getOrigen() {
@@ -77,8 +97,8 @@ public class Publicaciones {
         this.status = status;
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
     }
 
     public void setOrigen(String origen) {
@@ -88,4 +108,6 @@ public class Publicaciones {
     public void setCupo(int cupo) {
         this.cupo = cupo;
     }
+
+    //endregion
 }

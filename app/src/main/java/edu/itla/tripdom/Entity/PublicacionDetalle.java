@@ -1,22 +1,22 @@
 package edu.itla.tripdom.Entity;
 
-/**
+    /**
  * Created by fabio on 11/13/2017.
  */
 
 public class PublicacionDetalle {
     private int id;
-    private int publicacionId;
+    private Publicaciones publicacion;
     private String lugar;
     private String descripcion;
-    public String prueba;
 
+    //region getter & setter
     public int getId() {
         return id;
     }
 
-    public int getPublicacionId() {
-        return publicacionId;
+    public Publicaciones getPublicacionId() {
+        return publicacion;
     }
 
     public String getLugar() {
@@ -31,8 +31,8 @@ public class PublicacionDetalle {
         this.id = id;
     }
 
-    public void setPublicacionId(int publicacionId) {
-        this.publicacionId = publicacionId;
+    public void setPublicacion(Publicaciones publicacionId) {
+        this.publicacion = publicacionId;
     }
 
     public void setLugar(String lugar) {
@@ -42,4 +42,7 @@ public class PublicacionDetalle {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    //endregion
+
 }
