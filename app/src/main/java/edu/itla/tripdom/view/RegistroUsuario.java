@@ -11,10 +11,13 @@ import android.widget.EditText;
 import edu.itla.tripdom.Entity.TipoUsuario;
 import edu.itla.tripdom.Entity.Usuarios;
 import edu.itla.tripdom.R;
+import edu.itla.tripdom.dao.UsuarioDbo;
 
 public class RegistroUsuario extends AppCompatActivity {
 
     private static final String LOG_T = "RegistroUsuario";
+    private UsuarioDbo db;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,9 @@ public class RegistroUsuario extends AppCompatActivity {
         final EditText txtEmail = findViewById(R.id.txtEmail);
         final EditText txtTelefono = findViewById(R.id.txtTelefono);
         Button btnGuardar = findViewById(R.id.btnGuardar);
+        Button btnListar = findViewById(R.id.btnListar);
+        db = new UsuarioDbo(this);
+
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,8 +41,22 @@ public class RegistroUsuario extends AppCompatActivity {
                 usuario.setTelefono(txtTelefono.getText().toString());
                 usuario.setTipoUsuario(TipoUsuario.PUBLICADOR);
                 Log.i(LOG_T, usuario.toString());
+                db.crear(usuario);
+
             }
         });
+
+        btnListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                for(Usuarios user:db.buscar())
+                {
+                    Log.i(LOG_T, user.toString());
+                }
+            }
+        });
+
 
 
     }
