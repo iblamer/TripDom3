@@ -7,23 +7,23 @@
     tools:context="edu.itla.tripdom.MainActivity">
 
 
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="45dp" />
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="184dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="4dp"
-        android:text="Save"
-        app:layout_constraintTop_toBottomOf="@+id/txtName"
-        tools:layout_editor_absoluteX="16dp" />
+        <Button
+            android:id="@+id/btnUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuarios" />
 
+        <Button
+            android:id="@+id/btnPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PUBLICACIONES" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import edu.itla.tripdom.Entity.Usuarios;
 
 import edu.itla.tripdom.Entity.TipoUsuario;
-import edu.itla.tripdom.Entity.Usuarios;
 import edu.itla.tripdom.R;
 import edu.itla.tripdom.dao.UsuarioDbo;
 
@@ -17,6 +17,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private static final String LOG_T = "RegistroUsuario";
     private UsuarioDbo db;
+    private Usuarios usuario;
 
     @Override
 
@@ -30,18 +31,33 @@ public class RegistroUsuario extends AppCompatActivity {
         Button btnListar = findViewById(R.id.btnListar);
         db = new UsuarioDbo(this);
 
+        //Get the bundle
+        Bundle bundle = getIntent().getExtras();
+
+        //Extract the data…
+        if(bundle != null && bundle.containsKey("usuario")) {
+             usuario = (Usuarios) bundle.getSerializable("usuario");
+
+            txtNombre.setText(usuario.getNombreUsuario());
+            txtEmail.setText(usuario.getEmail());
+            txtTelefono.setText(usuario.getTelefono());
+        }
+
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuarios usuario = new Usuarios();
+                if(usuario == null)
+                {
+                    usuario = new Usuarios();
+                }
 
                 usuario.setNombreUsuario(txtNombre.getText().toString());
                 usuario.setEmail(txtEmail.getText().toString());
                 usuario.setTelefono(txtTelefono.getText().toString());
                 usuario.setTipoUsuario(TipoUsuario.PUBLICADOR);
                 Log.i(LOG_T, usuario.toString());
-                db.crear(usuario);
+                db.guardar(usuario);
 
             }
         });

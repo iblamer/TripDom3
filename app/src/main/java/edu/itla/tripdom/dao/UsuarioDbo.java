@@ -22,7 +22,7 @@ public class UsuarioDbo {
         connection = new DbConnection(context);
     }
 
-    public void crear(Usuarios usuario)
+    public void guardar(Usuarios usuario)
     {
         SQLiteDatabase db = connection.getWritableDatabase();
 
@@ -32,10 +32,43 @@ public class UsuarioDbo {
         cv.put("telefono", usuario.getTelefono());
         cv.put("tipo_usuario", usuario.getTipoUsuario().toString());
 
-        db.insert("usuario", null, cv);
+        if(usuario.getUsuarioId() <= 0){
+            Long id = db.insert("usuario", null, cv);
+            usuario.setUsuarioId(id.intValue());
+        }
+        else{
+            db.update("usuario", cv, "id = "+ usuario.getUsuarioId(), null);
+        }
+
 
         db.close();
 
+    }
+
+    public void editar(Usuarios usuario)
+    {
+        SQLiteDatabase db = connection.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("nombre", usuario.getNombreUsuario());
+        cv.put("email", usuario.getEmail());
+        cv.put("telefono", usuario.getTelefono());
+        cv.put("tipo_usuario", usuario.getTipoUsuario().toString());
+
+        db.update("usuario", cv, "id = " + usuario.getUsuarioId(), null);
+
+        db.close();
+
+    }
+
+    public void Eliminar(Usuarios usuarios)
+    {
+        SQLiteDatabase db = connection.getWritableDatabase();
+
+        db.delete("usuario", "id =" + usuarios.getUsuarioId(), null);
+
+        db.close();
     }
 
     public List<Usuarios> buscar() {
